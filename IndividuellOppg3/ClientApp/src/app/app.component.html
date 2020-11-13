@@ -1,0 +1,43 @@
+<div class="blockquote text-center">
+  <h1>NOR-WAY FAQ</h1>
+</div>
+
+<div class="container">
+  <div class="col-md-8">
+    <div *ngIf="laster">
+      Laster Spørsmål...
+    </div>
+    <form [formGroup]="skjema">
+      <table class="table table-borderless table-condensed">
+        <tbody *ngFor="let sporsmal of alleSporsmalene">
+          <tr>
+            <td>
+              <div>
+                <button class="btn btn-outline-success" (click)="likerButtonClick(sporsmal); lagreLiker();">Liker:  {{sporsmal.liker}}</button>
+                <button class="btn btn-outline-danger" (click)="likerIkkeButtonClick(sporsmal); lagreLikerIkke();">Liker Ikke:  {{sporsmal.likerIkke}}</button>
+              </div>
+            </td>
+            <td><strong>{{sporsmal.spm}}</strong> </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>{{sporsmal.svr}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<div class="col-xl-4 col-lg-5 col-md-8 col-sm-10 mx-auto text-center form p-4">
+  <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+    <div class="form-group">
+      <input class="form-control" formControlName="innSpm" placeholder="Hva lurer du på?" />
+    </div>
+      <button class="btn btn-primary" type="submit">Del Spørsmål</button>
+  </form>  
+</div>
+
